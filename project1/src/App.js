@@ -1,20 +1,19 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Hero from './components/Hero/Hero';
-import About from './components/About/About';
-import Divider from './components/Divider/Divider';
-import Services from './components/Services/Services';
-import Barbers from './components/Barbers/Barbers';
+import Home from './Pages/Home';
+import Appointment from './Pages/Appointment';
+
 
 function App() {
   return (
-    <div style={{ backgroundColor: '#EFEFEF'}}>
-      <Hero />
-      <About />
-      <Divider />
-      <Services />
-      <Divider />
-      <Barbers />
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/appointment" element={<Appointment />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
