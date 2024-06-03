@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 function Services() {
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center' id='service'>
       <h1 className='font-barlow-black uppercase'>browse our services</h1>
       <p className='max-w-xl text-center mb-12 font-work-sans'>Our barbershop was established in 2004, after an ambitious Ottawa barber set out to recreate the feel of an old style traditional barbershop.</p>
 
@@ -51,7 +51,7 @@ function Services() {
             </div>
         </div>
       </div>
-      <Button variant="primary" className="p-3 px-4 tracking-wide font-barlow-button uppercase mt-12" size="lg" href="/services" style={{ backgroundColor: '#90BDD7', borderRadius: 0, color: '#000', fontSize: '16px', border: 'none' }}>Book an appointment</Button>
+      <Button variant="primary" className="p-3 px-4 tracking-wide font-barlow-button uppercase mt-12" size="lg" href="/appointment" style={{ backgroundColor: '#90BDD7', borderRadius: 0, color: '#000', fontSize: '16px', border: 'none' }}>Book an appointment</Button>
     </div>
   )
 }

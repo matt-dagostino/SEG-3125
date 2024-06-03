@@ -23,8 +23,8 @@ function Hero() {
           <strong>Vintage Shears Barbershop</strong> - Elevating Style, One Cut at a Time
         </p>
         <div className="text-sm flex gap-12 uppercase">
-          <Button variant="primary" className="p-3 px-4 tracking-wide font-barlow-button" size="lg" href="/services" style={{ backgroundColor: '#90BDD7', borderRadius: 0, color: '#000', fontSize: '16px', border: 'none' }}>Book an appointment</Button>
-          <Button variant="light" className="p-3 tracking-wide font-barlow-button" size="lg" href="/services" style={{ border: '1px solid #ffffff', backgroundColor: 'transparent', borderRadius: 0, color: '#ffffff', fontSize: '16px' }}>Browse services</Button>
+          <Button variant="primary" className="p-3 px-4 tracking-wide font-barlow-button" size="lg" href="/appointment" style={{ backgroundColor: '#90BDD7', borderRadius: 0, color: '#000', fontSize: '16px', border: 'none' }}>Book an appointment</Button>
+          <Button variant="light" className="p-3 tracking-wide font-barlow-button" size="lg" href="/#service" style={{ border: '1px solid #ffffff', backgroundColor: 'transparent', borderRadius: 0, color: '#ffffff', fontSize: '16px' }}>Browse services</Button>
         </div>
       </div>
     </div>
