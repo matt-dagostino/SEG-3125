@@ -5,6 +5,8 @@ import Divider from "../components/Divider/Divider";
 import Services from "../components/Services/Services";
 import Barbers from "../components/Barbers/Barbers";
 import Footer from "../components/Footer/Footer";
+import Photos from "../components/Photos/Photos";
+
 function Home() {
   return (
     <div style={{ backgroundColor: "#EFEFEF" }}>
@@ -15,6 +17,8 @@ function Home() {
       <Services />
       <Divider />
       <Barbers />
+      <Divider />
+      <Photos />
       <Footer />
     </div>
   );
