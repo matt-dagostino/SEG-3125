@@ -17,25 +17,25 @@ function Photos() {
       <div className='bg-white p-12 rounded-xl flex flex-col md:flex-row gap-4 w-5/6'>
       <Carousel>
       <Carousel.Item>
-        <img  src={haircut1} />
+        <img  src={haircut1} alt=''/>
       </Carousel.Item>
       <Carousel.Item>
-      <img  src={haircut2} />
+      <img  src={haircut2} alt=''/>
       </Carousel.Item>
       <Carousel.Item>
-      <img  src={haircut3} />
+      <img  src={haircut3} alt=''/>
       </Carousel.Item>
       <Carousel.Item>
-      <img  src={haircut4} />
+      <img  src={haircut4} alt=''/>
       </Carousel.Item>
       <Carousel.Item>
-      <img  src={haircut5} />
+      <img  src={haircut5} alt=''/>
       </Carousel.Item>
       <Carousel.Item>
-      <img  src={haircut6} />
+      <img  src={haircut6} alt=''/>
       </Carousel.Item>
       <Carousel.Item>
-      <img  src={haircut7} />
+      <img  src={haircut7} alt=''/>
       </Carousel.Item>
     </Carousel>
       </div>
