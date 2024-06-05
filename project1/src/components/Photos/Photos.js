@@ -14,7 +14,7 @@ function Photos() {
       <h1 className='font-barlow-black uppercase'>our past work</h1>
       <p className='max-w-3xl text-center mb-12 font-work-sans px-4'>Here are some photos of some of our best work to give you a taste of what you'd get by coming down to Vintage Shears barbershop!</p>
       
-      <div className='bg-white p-12 rounded-xl flex flex-col md:flex-row gap-4 w-5/6'>
+      <div className='bg-white p-12 rounded-xl flex flex-col md:flex-row gap-4 w-5/6 lg:w-3/4'>
       <Carousel>
       <Carousel.Item>
         <img  src={haircut1} alt=''/>
