@@ -56,10 +56,10 @@ function Success(props) {
       className="flex flex-col items-center pt-12 w-full"
       style={{ backgroundColor: "#EFEFEF" }}
     >
-      <h1 className="font-barlow-black uppercase mb-12">
+      <h1 className="font-barlow-black uppercase mb-12 text-center">
         appointment successfully booked
       </h1>
-      <div className="w-1/2 font-work-sans flex flex-col bg-white rounded-lg p-4">
+      <div className="w-5/6 xl:w-4/6 font-work-sans flex flex-col bg-white rounded-lg p-4 overflow-auto">
         <div className="font-bold text-2xl">
           {formattedDate} at {props.time}
         </div>
@@ -73,7 +73,7 @@ function Success(props) {
               <div>Booking ref. #: 22</div>
             </div>
           </div>
-          <div className="w-1/2 flex justify-around justify-center">
+          <div className="w-1/2 flex flex-col sm:flex-row justify-around justify-center">
             <div className="flex flex-col justify-center items-center">
               <OverlayTrigger
                 overlay={

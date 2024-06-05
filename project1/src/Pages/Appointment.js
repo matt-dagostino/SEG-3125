@@ -184,8 +184,8 @@ function Appointment() {
           </div>
           <p className="-mb-1 text-xs">Step 2 of 3</p>
           <p className="text-2xl font-bold">Select time</p>
-          <div className="bg-white flex flex-col justify-center rounded-lg">
-            <div className="flex gap-2 justify-around p-4">
+          <div className="bg-white flex flex-col justify-center rounded-lg overflow-auto">
+            <div className="flex gap-2 justify-around p-2">
               {days.map((day, index) => (
                 <div
                   key={index}
@@ -224,8 +224,8 @@ function Appointment() {
 
           <p className="-mb-1  mt-4 text-xs">Step 3 of 3</p>
           <p className="text-2xl font-bold">Input information</p>
-          <div className="bg-white flex justify-around p-4 items-center rounded-lg">
-            <div className="w-1/3">
+          <div className="bg-white flex flex-col md:flex-row justify-around p-4 items-center rounded-lg">
+            <div className="w-full md:w-1/3">
               <FloatingLabel
                 controlId="floatingInput"
                 label="Name"
@@ -234,7 +234,7 @@ function Appointment() {
                 <Form.Control type="text" placeholder="John Doe" />
               </FloatingLabel>
             </div>
-            <div className="w-1/3">
+            <div className="w-full md:w-1/3">
               <FloatingLabel
                 controlId="floatingInput"
                 label="Email address"
