@@ -11,11 +11,11 @@ function Services() {
       <h1 className='font-barlow-black uppercase'>browse our services</h1>
       <p className='max-w-xl text-center mb-12 font-work-sans'>Our barbershop was established in 2004, after an ambitious Ottawa barber set out to recreate the feel of an old style traditional barbershop.</p>
 
-      <div className='bg-white p-24 max-w-screen-lg shadow-md'>
+      <div className='bg-white p-12 mx-12 xl:p-24 max-w-screen-lg shadow-md'>
         <div className='flex flex-col gap-20'>
-            <div className='flex gap-24'>
+            <div className='flex gap-24 flex-col md:flex-row items-center'>
                 <div className='flex gap-8 w-1/2'>
-                    <Adult />
+                    <Adult/>
                     <div className='flex flex-col'>
                         <h1 className='uppercase font-barlow-black text-2xl'>Adult haircut</h1>
                         <p className='font-work-sans'>Precision cuts for your unique style, ensuring confidence and sophistication with every visit.</p>
@@ -31,7 +31,7 @@ function Services() {
                     </div>  
                 </div>
             </div>
-            <div className='flex gap-24'>
+            <div className='flex gap-24 flex-col md:flex-row items-center'>
                 <div className='flex gap-8 w-1/2'>
                     <Beard />
                     <div className='flex flex-col'>

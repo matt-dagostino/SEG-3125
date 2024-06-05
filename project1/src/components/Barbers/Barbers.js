@@ -10,7 +10,7 @@ function Barbers() {
       <h1 className='font-barlow-black uppercase'>our barbers</h1>
       <p className='max-w-3xl text-center mb-12 font-work-sans'> At the heart of our barbershop, our talented team brings years of expertise, passion, and attention to detail to every haircut and grooming service. From classic styles to modern trends, trust our barbers to craft the perfect look tailored just for you.</p>
       
-      <div className='bg-white p-12 rounded-xl flex gap-4'>
+      <div className='bg-white p-12 rounded-xl flex flex-col md:flex-row gap-4'>
         <Card style={{ width: '20rem' }} className='shadow-md'>
         <Card.Img variant="top" src={Alec} />
         <Card.Body>
