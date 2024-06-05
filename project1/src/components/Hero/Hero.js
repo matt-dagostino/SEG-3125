@@ -16,7 +16,7 @@ function Hero() {
 
       <div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
         <div className="p-40"></div>
-        <h1 class="text-6xl leading-tight uppercase font-barlow-black px-96">
+        <h1 class="text-5xl xl:text-6xl leading-tight uppercase font-barlow-black px-24 lg:px-40 xl:px-96">
           embrace excellence with our premier barbershop experience
         </h1>
         <p class="text-lg text-white font-work-sans mb-8">
@@ -28,14 +28,14 @@ function Hero() {
         </div>
       </div>
     </div>
-    <div className="bg-white rounded-md -mt-20 z-10 w-1/2 flex gap-4 p-4 items-start">
+    <div className="hidden md:flex bg-white shadow-md rounded-md -mt-16 z-10 w-1/2 flex gap-4 p-4 items-start">
       <div className="flex flex-col w-1/3 justify-center items-center gap-2">
         <div className="text-5xl">
           <IoLocationSharp/>
         </div>
         <h1 className="font-barlow-black uppercase text-2xl">address</h1>
         <div className="bg-green-200 h-1 w-24 rounded-sm"></div>
-        <p className="font-barlow-thin uppercase text-center w-2/3">550 Cumberland St, Ottawa, on k1n 6n5</p>
+        <p className="font-barlow-thin uppercase text-center w-2/3 text-sm lg:text-base">550 Cumberland St, Ottawa, on k1n 6n5</p>
       </div>
       <div className="flex flex-col w-1/3 justify-center items-center gap-2">
         <div className="text-5xl">
@@ -43,7 +43,7 @@ function Hero() {
         </div>
         <h1 className="font-barlow-black uppercase text-2xl">address</h1>
         <div className="bg-green-200 h-1 w-24 rounded-sm"></div>
-        <p className="font-barlow-thin uppercase">+ 1 (613) 453 3092</p>
+        <p className="font-barlow-thin uppercase text-center text-sm lg:text-base">+ 1 (613) 453 3092</p>
       </div>
       <div className="flex flex-col w-1/3 justify-center items-center gap-2">
         <div className="text-5xl">
@@ -51,7 +51,7 @@ function Hero() {
         </div>
         <h1 className="font-barlow-black uppercase text-2xl">address</h1>
         <div className="bg-green-200 h-1 w-24 rounded-sm"></div>
-        <p className="font-barlow-thin uppercase text-center">Mon – Sat: 9AM – 9PM<br></br>Sun: 9AM – 5PM</p>
+        <p className="font-barlow-thin uppercase text-center text-sm lg:text-base">Mon – Sat: 9AM – 9PM<br></br>Sun: 9AM – 5PM</p>
       </div>
     </div>
     </div>

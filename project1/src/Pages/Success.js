@@ -49,7 +49,7 @@ function Success(props) {
       ];
     const currentMonthName = monthNames[currentMonth - 1];
     setFormattedDate(days[day].Name + ", " + currentMonthName + " " + days[day].Day + " 2024");
-  }, [days]);
+  }, [days, props.day]);
 
   return (
     <div
