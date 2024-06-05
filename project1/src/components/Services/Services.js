@@ -36,7 +36,7 @@ function Services() {
                     <Beard />
                     <div className='flex flex-col'>
                         <h1 className='uppercase font-barlow-black text-2xl'>haircut + beard trim</h1>
-                        <p className='font-work-sans'>Complete grooming solutions, blending hair and facial hair for a polished look.</p>
+                        <p className='font-work-sans'>Complete grooming solutions, blending hair and facial hair for a upolished look.</p>
                         <p className='font-barlow-black text-2xl'>$32</p>
                     </div>  
                 </div>
