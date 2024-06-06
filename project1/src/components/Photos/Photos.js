@@ -6,7 +6,6 @@ import haircut3 from "../../img/haircut3.jpg";
 import haircut4 from "../../img/haircut4.jpg";
 import haircut5 from "../../img/haircut5.jpg";
 import haircut6 from "../../img/haircut6.jpg";
-import haircut7 from "../../img/haircut7.jpg";
 
 function Photos() {
   return (
@@ -33,9 +32,6 @@ function Photos() {
       </Carousel.Item>
       <Carousel.Item>
       <img  src={haircut6} alt=''/>
-      </Carousel.Item>
-      <Carousel.Item>
-      <img  src={haircut7} alt=''/>
       </Carousel.Item>
     </Carousel>
       </div>
