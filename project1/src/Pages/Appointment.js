@@ -93,7 +93,7 @@ function Appointment() {
         className="flex flex-col items-center pt-12 w-full"
         style={{ backgroundColor: "#EFEFEF" }}
       >
-        <Alert show={show} variant="success">
+        <Alert show={show} variant="danger">
                 <Alert.Heading>Booking could not be completed!</Alert.Heading>
                 <p>
                   Oops! Looks like you missed some information. Please make sure to select a <strong>timeslot</strong>, and provide your <strong>name and email address</strong>.
@@ -102,7 +102,7 @@ function Appointment() {
                 <div className="d-flex justify-content-end">
                   <Button
                     onClick={() => setShow(false)}
-                    variant="outline-success"
+                    variant="outline-danger"
                   >
                     Close me
                   </Button>
