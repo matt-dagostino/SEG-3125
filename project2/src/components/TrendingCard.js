@@ -7,6 +7,7 @@ import { ReactComponent as Twostar } from '../img/2star.svg';
 import { ReactComponent as Threestar } from '../img/3star.svg';
 import { ReactComponent as Fourstar } from '../img/4star.svg';
 import { ReactComponent as Fivestar } from '../img/5star.svg';
+import { Link } from 'react-router-dom';
 
 export default function TrendingCard(props) {
     const images = {
@@ -28,7 +29,16 @@ export default function TrendingCard(props) {
       {props.stars === 5 && <Fivestar />}
         <div className='flex justify-between justify-center items-center'>
             <p className=' text-xs font-bold uppercase'>{props.serving}</p>
-            <a href='/recipes' className='border uppercase font-semibold border-heading-color rounded-2xl py-1 px-3'> View Recipe</a>
+            
+            <Link
+      to={{
+        pathname: `/recipe/${props.title}`, // Example URL structure
+        state: { recipe: props }
+      }}
+      className='border uppercase font-semibold border-heading-color rounded-2xl py-1 px-3'
+    >
+      View Recipe
+    </Link>
         </div>
       </div>
     </div>
