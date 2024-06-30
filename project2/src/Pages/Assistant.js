@@ -16,7 +16,7 @@ import {
   InfoButton,
 } from "@chatscope/chat-ui-kit-react";
 
-import { API_KEY } from '../config.js';
+const API_KEY = process.env.REACT_APP_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
