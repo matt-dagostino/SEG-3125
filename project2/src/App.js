@@ -4,6 +4,8 @@ import Assistant from './Pages/Assistant';
 import AddRecipe from './Pages/AddRecipe';
 import Recipe from './Pages/Recipe';
 import Recipes from './Pages/Recipes';
+import Zoom from './Pages/Zoom';
+import List from './Pages/List';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/recipe" element={<Recipe />} />
           <Route path="/recipe/:recipeName" element={<Recipe />} />
           <Route path="/recipes" element={<Recipes />} />
+          <Route path="/zoom" element={<Zoom />} />
+          <Route path="/list" element={<List />} />
         </Routes>
       </div>
     </Router>

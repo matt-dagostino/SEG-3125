@@ -16,7 +16,7 @@ import {
   InfoButton,
 } from "@chatscope/chat-ui-kit-react";
 
-const API_KEY = "AIzaSyARlVqsStONF6AQ8SIkWdEAJ7qt5lCTQAU";
+import { API_KEY } from '../config.js';
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
@@ -64,10 +64,10 @@ function Assistant() {
     <div>
       <Navbar location="assistant" />
       <div className="flex flex-col justify-center items-center pt-8 gap-4 pb-12">
-        <h1 className="text-5xl font-extrabold uppercase">
+        <h1 className="text-5xl font-extrabold uppercase text-heading-color">
           Need help cooking?
         </h1>
-        <p className="font-semibold">Ask our Dish Discovery Assistant Below!</p>
+        <p className="font-semibold text-heading-color">Ask our Dish Discovery Assistant Below!</p>
         <div className="bg-white h-1/2 w-1/2 rounded-xl overflow-hidden p-4">
           <MainContainer>
             <ChatContainer>

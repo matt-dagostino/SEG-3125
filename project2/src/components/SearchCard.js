@@ -21,7 +21,7 @@ export default function SearchCard(props) {
           alt={props.image}
           className="w-full h-48 object-cover rounded-tl-xl rounded-tr-xl"
         />
-        <div className="bg-white  rounded-br-xl rounded-bl-xl flex flex-col min-h-56 p-4 gap-4">
+        <div className="bg-white rounded-br-xl rounded-bl-xl flex flex-col min-h-56 p-4 gap-4">
           <h2 className="font-bold text-lg">{props.title}</h2>
           <p className="font">{props.description}</p>
           {props.stars === 1 && <Onestar />}

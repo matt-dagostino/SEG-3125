@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="overflow-hidden">
       <Navbar location="home" />
       {/* Hero Section */}
       <div
@@ -163,28 +163,28 @@ function Home() {
           <div className="flex flex-col gap-2 text-center justify-center">
             <Gnocchi
               onClick={() => navigate("/recipes")}
-              className="cursor-pointer"
+              className="cursor-pointer rounded-3xl items-center justify-center"
             />
             <p className="text-xl font-bold">Chorizo Mozzarella Gnocchi</p>
           </div>
           <div className="flex flex-col gap-2 text-center justify-center">
             <Tuna
               onClick={() => navigate("/recipes")}
-              className="cursor-pointer"
+              className="cursor-pointer rounded-3xl items-center justify-center"
             />
             <p className="text-xl font-bold">Tuna grilled cheese</p>
           </div>
           <div className="flex flex-col gap-2 text-center justify-center">
             <Tater
               onClick={() => navigate("/recipes")}
-              className="cursor-pointer"
+              className="cursor-pointer rounded-3xl items-center justify-center"
             />
             <p className="text-xl font-bold">Tater tots casserole</p>
           </div>
           <div className="flex flex-col gap-2 text-center justify-center">
             <Broccoli
               onClick={() => navigate("/recipes")}
-              className="cursor-pointer"
+              className="cursor-pointer rounded-3xl items-center justify-center"
             />
             <p className="text-xl font-bold">Broccoli ranch fiesta</p>
           </div>

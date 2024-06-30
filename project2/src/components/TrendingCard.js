@@ -1,7 +1,4 @@
 import React from 'react'
-import shawarma from "../img/shawarma.jpg";
-import taco from "../img/taco.jpg";
-import pasta from "../img/pasta.jpg";
 import { ReactComponent as Onestar } from '../img/1star.svg';
 import { ReactComponent as Twostar } from '../img/2star.svg';
 import { ReactComponent as Threestar } from '../img/3star.svg';
@@ -11,9 +8,9 @@ import { Link } from 'react-router-dom';
 
 export default function TrendingCard(props) {
     const images = {
-        shawarma: shawarma,
-        taco: taco,
-        pasta: pasta,
+        shawarma: 'https://hips.hearstapps.com/hmg-prod/images/190130-chicken-shwarma-horizontal-1549421250.png?crop=1xw:0.843328335832084xh;center,top',
+        taco: 'https://www.onceuponachef.com/images/2023/08/Beef-Tacos.jpg',
+        pasta: 'https://www.mrsjoneskitchen.com/wp-content/uploads/2022/08/one-pot-creamy-sausage-pasta.jpg',
       };
 
   return (
