@@ -26,7 +26,7 @@ function Home() {
         style={{ backgroundImage: `url(${heroPage})` }}
       >
         <div className="flex flex-col justify-center items-center text-center text-hero-text gap-4">
-          <h1 className="text-8xl text-white uppercase font-extrabold">
+          <h1 className="text-4xl lg:text-6xl xl:text-8xl text-white uppercase font-extrabold">
             Craft delicious <br></br>memories
           </h1>
           <p className="text-white text-xl w-1/3">
@@ -48,7 +48,7 @@ function Home() {
         <h1 className="text-5xl text-heading-color uppercase font-extrabold">
           trending recipes
         </h1>
-        <div className="flex justify-around">
+        <div className="flex justify-around gap-8">
           <TrendingCard
             item={"shawarma"}
             title={"Chicken Shawarma"}
@@ -84,41 +84,41 @@ function Home() {
         <h1 className="text-5xl text-heading-color uppercase font-extrabold mb-8">
           Popular categories
         </h1>
-        <div className="flex justify-between">
-          <div className="flex flex-col gap-2 w-1/6 text-center justify-center">
+        <div className="flex justify-between ">
+          <div className="flex flex-col gap-2 w-1/6 text-center justify-center items-center">
             <Breakfast
               onClick={() => navigate("/recipes")}
-              className="cursor-pointer"
+              className="cursor-pointer h-48 md:h-64 lg:72 xl:h-96"
             />
-            <p className="text-xl font-bold">Breakfast</p>
+            <p className="text-xl font-bold hidden md:block">Breakfast</p>
           </div>
-          <div className="flex flex-col gap-2 w-1/6 text-center justify-center">
+          <div className="flex flex-col gap-2 w-1/6 text-center justify-center items-center">
             <Pizza
               onClick={() => navigate("/recipes")}
-              className="cursor-pointer"
+              className="cursor-pointer h-48 md:h-64 lg:72 xl:h-96"
             />
-            <p className="text-xl font-bold">Pizza</p>
+            <p className="text-xl font-bold hidden md:block">Pizza</p>
           </div>
-          <div className="flex flex-col gap-2 w-1/6 text-center justify-center">
+          <div className="flex flex-col gap-2 w-1/6 text-center justify-center items-center">
             <Vegan
               onClick={() => navigate("/recipes")}
-              className="cursor-pointer"
+              className="cursor-pointer h-48 md:h-64 lg:72 xl:h-96"
             />
-            <p className="text-xl font-bold">Vegan</p>
+            <p className="text-xl font-bold hidden md:block">Vegan</p>
           </div>
-          <div className="flex flex-col gap-2 w-1/6 text-center justify-center">
+          <div className="flex flex-col gap-2 w-1/6 text-center justify-center items-center">
             <Desserts
               onClick={() => navigate("/recipes")}
-              className="cursor-pointer"
+              className="cursor-pointer h-48 md:h-64 lg:72 xl:h-96"
             />
-            <p className="text-xl font-bold">Desserts</p>
+            <p className="text-xl font-bold hidden md:block">Desserts</p>
           </div>
-          <div className="flex flex-col gap-2 w-1/6 text-center justify-center">
+          <div className="flex flex-col gap-2 w-1/6 text-center justify-center items-center">
             <Smoothies
               onClick={() => navigate("/recipes")}
-              className="cursor-pointer"
+              className="cursor-pointer h-48 md:h-64 lg:72 xl:h-96"
             />
-            <p className="text-xl font-bold">Smoothies</p>
+            <p className="text-xl font-bold hidden md:block">Smoothies</p>
           </div>
         </div>
       </div>
