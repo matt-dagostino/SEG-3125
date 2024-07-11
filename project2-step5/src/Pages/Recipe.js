@@ -553,9 +553,15 @@ function Recipe() {
             <div className="flex gap-4 items-center mt-12">
               <div onClick={toggleLike} className="cursor-pointer">
                 {liked ? (
-                  <IoIosHeartEmpty className="text-3xl text-red-700 " data-tooltip-id="my-tooltip-2"/>
+                  <IoIosHeartEmpty
+                    className="text-3xl text-red-700 "
+                    data-tooltip-id="my-tooltip-2"
+                  />
                 ) : (
-                  <IoMdHeart className="text-3xl text-red-700" data-tooltip-id="my-tooltip-3"/>
+                  <IoMdHeart
+                    className="text-3xl text-red-700"
+                    data-tooltip-id="my-tooltip-3"
+                  />
                 )}
               </div>
               <p>Like recipe</p>
@@ -580,7 +586,11 @@ function Recipe() {
                 onClick={toogleAdd}
                 className="text-4xl text-blue-500 cursor-pointer"
               >
-                {add ? <CiSquarePlus data-tooltip-id="my-tooltip-1"/> : <IoIosCheckmarkCircle data-tooltip-id="my-tooltip-4"/>}
+                {add ? (
+                  <CiSquarePlus data-tooltip-id="my-tooltip-1" />
+                ) : (
+                  <IoIosCheckmarkCircle data-tooltip-id="my-tooltip-4" />
+                )}
               </div>
               <ReactTooltip
                 id="my-tooltip-1"
@@ -599,7 +609,7 @@ function Recipe() {
               ))}
             </ul>
           </div>
-          
+
           <div className="cursor-pointer">
             <Share />
           </div>

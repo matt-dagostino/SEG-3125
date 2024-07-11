@@ -21,7 +21,7 @@ function List() {
   return (
     <div>
       <Navbar location="list" />
-      <div className="flex flex-col justify-center items-center pt-8 gap-4 pb-12">
+      <main className="flex flex-col justify-center items-center pt-8 gap-4 pb-12">
         <h1 className="text-5xl font-extrabold uppercase text-heading-color">
           Liked Recipes
         </h1>
@@ -45,20 +45,20 @@ function List() {
             serving={"serves 3 - Easy difficulty - 45 mins"}
           />
         </div>
-        <h1 className="text-5xl font-extrabold uppercase text-heading-color pt-12">
+        <h2 className="text-5xl font-extrabold uppercase text-heading-color pt-12">
           Grocery List
-        </h1>
-        <div className="col-span-2 bg-white p-8 rounded-lg shadow-md">
-          <h3 className="uppercase text-blue-500 font-semibold mb-2 ">
-            Items that you've added to this week's grocery list
+        </h2>
+        <section className="col-span-2 bg-white p-8 rounded-lg shadow-md">
+          <h3 className="uppercase text-blue-500 font-semibold mb-2">
+            This week's grocery list
           </h3>
           <ul className="list-disc ml-6">
             {ingredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
-        </div>
-      </div>
+        </section>
+      </main>
       <Footer />
     </div>
   );

@@ -501,7 +501,10 @@ function Recipes() {
                 />
               </div>
               <div className="flex justify-center">
-                <button onClick={() => clearFilters()} className="bg-blue-500 p-2 rounded-xl text-white font-semibold mt-4 justify-center hover:bg-blue-700 shadow-lg">
+                <button
+                  onClick={() => clearFilters()}
+                  className="bg-blue-500 p-2 rounded-xl text-white font-semibold mt-4 justify-center hover:bg-blue-700 shadow-lg"
+                >
                   Clear Filters
                 </button>
               </div>
