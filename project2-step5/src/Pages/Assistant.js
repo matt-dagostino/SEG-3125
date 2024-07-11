@@ -75,6 +75,7 @@ function Assistant() {
                 <Avatar
                   name="Dish Discovery Assistant"
                   src="https://static.vecteezy.com/system/resources/previews/021/059/827/non_2x/chatgpt-logo-chat-gpt-icon-on-white-background-free-vector.jpg"
+                  art="Dish Discovery Assistant Icon"
                 />
                 <ConversationHeader.Content
                   info="Active now"
