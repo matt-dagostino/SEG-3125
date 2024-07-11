@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { ReactComponent as Upload } from "../img/upload.svg";
 import { ReactComponent as RemoveButton } from "../img/removebutton.svg";
-import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
 
 function AddRecipe() {
   const router = useNavigate();
@@ -51,7 +50,8 @@ function AddRecipe() {
     newSteps.splice(index, 1);
     setSteps(newSteps);
   };
-if (submitted) {
+
+  if (submitted) {
     return (
       <div>
         <Navbar />
@@ -67,8 +67,10 @@ if (submitted) {
           </div>
         </div>
         <Footer />
-      </div>);
-}
+      </div>
+    );
+  }
+
   return (
     <div>
       <Navbar />
@@ -80,90 +82,127 @@ if (submitted) {
             id="file"
             ref={inputFile}
             style={{ display: "none" }}
+            aria-label="Upload recipe image"
           />
-
-          <Upload className="cursor-pointer h-1/2" onClick={onButtonClick} />
+          <Upload
+            className="cursor-pointer h-1/2"
+            onClick={onButtonClick}
+            role="button"
+            aria-label="Upload recipe image"
+          />
         </div>
-        <form className="w-1/2" onSubmit={() => setSubmitted(true)}>
-          <div class="grid gap-6 mb-6">
+        <form
+          className="w-1/2"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setSubmitted(true);
+          }}
+        >
+          <div className="grid gap-6 mb-6">
             <div>
-              <label class="block mb-2 text-lg font-medium text-gray-900">
+              <label
+                htmlFor="recipe-title"
+                className="block mb-2 text-lg font-medium text-gray-900"
+              >
                 Recipe Title <span className="font-bold text-red-600">*</span>
               </label>
               <input
+                id="recipe-title"
                 type="text"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Enter your recipe title"
                 required
               />
             </div>
             <div>
-              <label class="block mb-2 text-lg font-medium text-gray-900">
+              <label
+                htmlFor="short-description"
+                className="block mb-2 text-lg font-medium text-gray-900"
+              >
                 Short Description{" "}
                 <span className="font-bold text-red-600">*</span>
               </label>
               <input
+                id="short-description"
                 type="text"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Describe your recipe in a way that makes mouths water."
                 required
               />
             </div>
           </div>
-          <div class="grid gap-6 mb-6 md:grid-cols-3">
-            <div class="grid gap-6 mb-6 md:grid-row-3">
+          <div className="grid gap-6 mb-6 md:grid-cols-3">
+            <div className="grid gap-6 mb-6 md:grid-row-3">
               <div className="flex justify-between">
-                <label class="block mb-2 text-lg font-medium text-gray-900">
+                <label
+                  htmlFor="servings"
+                  className="block mb-2 text-lg font-medium text-gray-900"
+                >
                   Servings <span className="font-bold text-red-600">*</span>
                 </label>
                 <input
+                  id="servings"
                   type="text"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 h-12 w-1/2"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 h-12 w-1/2"
                   placeholder="e.g., 4"
                   required
                 />
               </div>
               <div className="flex justify-between">
-                <label class="block mb-2 text-lg font-medium text-gray-900">
+                <label
+                  htmlFor="prep-time"
+                  className="block mb-2 text-lg font-medium text-gray-900"
+                >
                   Prep Time <span className="font-bold text-red-600">*</span>
                 </label>
                 <input
+                  id="prep-time"
                   type="text"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 h-12 w-1/2"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 h-12 w-1/2"
                   placeholder="mins"
                   required
                 />
               </div>
               <div className="flex justify-between">
-                <label class="block mb-2 text-lg font-medium text-gray-900">
+                <label
+                  htmlFor="cook-time"
+                  className="block mb-2 text-lg font-medium text-gray-900"
+                >
                   Cook Time <span className="font-bold text-red-600">*</span>
                 </label>
                 <input
+                  id="cook-time"
                   type="text"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 h-12 w-1/2"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 h-12 w-1/2"
                   placeholder="mins"
                   required
                 />
               </div>
             </div>
             <div className="col-span-2">
-              <label className="block mb-2 text-lg font-medium text-gray-900">
+              <label
+                htmlFor="ingredients"
+                className="block mb-2 text-lg font-medium text-gray-900"
+              >
                 Ingredients <span className="font-bold text-red-600">*</span>
               </label>
               {ingredients.map((ingredient, index) => (
                 <div key={index} className="flex items-center mb-2">
                   <input
+                    id={`ingredient-${index}`}
                     type="text"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     placeholder="Item"
                     value={ingredient}
                     onChange={(e) => handleInputChange(index, e.target.value)}
                     required
+                    aria-labelledby={`ingredient-label-${index}`}
                   />
                   <button
                     type="button"
                     onClick={() => handleRemoveInput(index)}
                     className="ml-2 text-red-600"
+                    aria-label={`Remove ingredient ${index + 1}`}
                   >
                     <RemoveButton />
                   </button>
@@ -173,6 +212,7 @@ if (submitted) {
                 type="button"
                 onClick={handleAddInput}
                 className="text-black font-bold rounded-lg px-4 py-2 mt-2"
+                aria-label="Add ingredient"
               >
                 + Add Ingredient
               </button>
@@ -180,54 +220,66 @@ if (submitted) {
           </div>
           <div className="bg-gray-300 w-full h-0.5 rounded-lg my-12"></div>
           <div>
-            <label className="block mb-2 text-lg font-medium text-gray-900">
+            <label
+              htmlFor="instructions"
+              className="block mb-2 text-lg font-medium text-gray-900"
+            >
               Instructions <span className="font-bold text-red-600">*</span>
             </label>
-            <p className="mb-8">Break down your recipe into clear, step-by-step instructions.</p>
+            <p className="mb-8">
+              Break down your recipe into clear, step-by-step instructions.
+            </p>
             {steps.map((step, index) => (
               <div key={index} className="flex flex-col items-start mb-2">
-                <p className="mb-2">Step {index +1}</p>
+                <p className="mb-2" id={`step-label-${index}`}>
+                  Step {index + 1}
+                </p>
                 <div className="flex w-full mb-4">
-                <textarea
-                  type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 h-24"
-                  placeholder="Item"
-                  value={step}
-                  onChange={(e) => handleInputChange2(index, e.target.value)}
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => handleRemoveInput2(index)}
-                  className="ml-2 text-red-600"
-                >
-                  <RemoveButton />
-                </button>
-                    </div>
+                  <textarea
+                    id={`step-${index}`}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 h-24"
+                    placeholder="Item"
+                    value={step}
+                    onChange={(e) => handleInputChange2(index, e.target.value)}
+                    required
+                    aria-labelledby={`step-label-${index}`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveInput2(index)}
+                    className="ml-2 text-red-600"
+                    aria-label={`Remove step ${index + 1}`}
+                  >
+                    <RemoveButton />
+                  </button>
+                </div>
               </div>
             ))}
             <button
               type="button"
               onClick={handleAddInput2}
               className="text-black font-bold rounded-lg px-4 py-2 mt-2"
+              aria-label="Add step"
             >
               + Add Step
             </button>
           </div>
           <div className="flex justify-end gap-4 mt-8">
-          <button
-            type="submit"
-            onClick={() => router("/")}
-            class="font-semibold border-2 border-blue-600  text-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-md w-full sm:w-auto px-5 py-2.5 text-center"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-md w-full sm:w-auto px-5 py-2.5 text-center"
-          >
-            Submit Recipe
-          </button>
+            <button
+              type="button"
+              onClick={() => router("/")}
+              className="font-semibold border-2 border-blue-600 text-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-md w-full sm:w-auto px-5 py-2.5 text-center"
+              aria-label="Cancel and return to homepage"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-md w-full sm:w-auto px-5 py-2.5 text-center"
+              aria-label="Submit recipe"
+            >
+              Submit Recipe
+            </button>
           </div>
         </form>
       </div>

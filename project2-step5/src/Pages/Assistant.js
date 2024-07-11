@@ -67,7 +67,9 @@ function Assistant() {
         <h1 className="text-5xl font-extrabold uppercase text-heading-color">
           Need help cooking?
         </h1>
-        <p className="font-semibold text-heading-color">Ask our Dish Discovery Assistant Below!</p>
+        <p className="font-semibold text-heading-color">
+          Ask our Dish Discovery Assistant Below!
+        </p>
         <div className="bg-white h-1/2 w-1/2 rounded-xl overflow-hidden p-4">
           <MainContainer>
             <ChatContainer>
@@ -85,7 +87,8 @@ function Assistant() {
                   <InfoButton />
                 </ConversationHeader.Actions>
               </ConversationHeader>
-              <MessageList style={{height: "500px"}}
+              <MessageList
+                style={{ height: "500px" }}
                 typingIndicator={
                   typing ? (
                     <TypingIndicator content="Dish Discovery Assistant is typing..." />
@@ -105,7 +108,7 @@ function Assistant() {
           </MainContainer>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
