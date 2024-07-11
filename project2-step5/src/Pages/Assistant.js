@@ -14,6 +14,7 @@ import {
   Avatar,
   InfoButton,
 } from "@chatscope/chat-ui-kit-react";
+import { useTranslation } from "react-i18next";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
@@ -21,9 +22,10 @@ const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
 function Assistant() {
   const [typing, setTyping] = useState(false);
+  const { t } = useTranslation();
   const [messages, setMessages] = useState([
     {
-      message: "Hello! I'm Dish Discovery Assistant. How can I help you today?",
+      message:t('assistant.message'),
       sender: "ChatGPT",
       direction: "incoming",
     },
@@ -64,10 +66,10 @@ function Assistant() {
       <Navbar location="assistant" />
       <div className="flex flex-col justify-center items-center pt-8 gap-4 pb-12">
         <h1 className="text-5xl font-extrabold uppercase text-heading-color">
-          Need help cooking?
+          {t('assistant.help')}
         </h1>
         <p className="font-semibold text-heading-color">
-          Ask our Dish Discovery Assistant Below!
+          {t('assistant.ask')}
         </p>
         <div className="bg-white h-1/2 w-1/2 rounded-xl overflow-hidden p-4">
           <MainContainer>
@@ -80,8 +82,8 @@ function Assistant() {
                   aria-label="Dish Discovery Assistant Icon"
                 />
                 <ConversationHeader.Content
-                  info="Active now"
-                  userName="Dish Discovery Assistant"
+                  info={t('assistant.status')}
+                  userName={t('assistant.username')}
                   aria-label="Dish Discovery Assistant is active now"
                 />
                 <ConversationHeader.Actions>
@@ -92,7 +94,7 @@ function Assistant() {
                 style={{ height: "500px" }}
                 typingIndicator={
                   typing ? (
-                    <TypingIndicator content="Dish Discovery Assistant is typing..." aria-live="polite" />
+                    <TypingIndicator content={t('assistant.typing')} aria-live="polite" />
                   ) : null
                 }
               >
@@ -103,7 +105,7 @@ function Assistant() {
                 })}
               </MessageList>
               <MessageInput
-                placeholder="Type a message..."
+                placeholder={t('assistant.type')}
                 onSend={sendMessage}
                 attachButton={false}
                 aria-label="Type a message and press enter to send"

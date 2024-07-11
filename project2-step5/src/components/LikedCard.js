@@ -7,9 +7,11 @@ import { ReactComponent as Fourstar } from "../img/4star.svg";
 import { ReactComponent as Fivestar } from "../img/5star.svg";
 import { IoMdHeart, IoIosHeartEmpty } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function LikedCard(props) {
   const [liked, setLiked] = useState(false);
+  const { t } = useTranslation();
   const toggleLike = () => {
     setLiked(!liked);
   };
@@ -55,7 +57,7 @@ export default function LikedCard(props) {
             }}
             className="border uppercase font-semibold border-heading-color rounded-2xl py-1 px-3"
           >
-            View Recipe
+            {t("lists.viewRecipe")}
           </Link>
         </div>
       </div>

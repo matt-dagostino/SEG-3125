@@ -2,16 +2,14 @@ import React from "react";
 import { ReactComponent as Icon } from "../img/logo2.svg";
 import { ReactComponent as SocialMedia } from "../img/social media.svg";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "./LanguageSwitch";
 
-function Footer() {
+function SpecialFooter() {
   const { t } = useTranslation();
   return (
     <div className="bg-footer-color text-white w-full flex p-12 pl-32">
       <div className="flex flex-col gap-4 w-2/5">
         <Icon />
         <p className="text-xs">{t('footer.description')}</p>
-        <LanguageSwitcher />
       </div>
       <div className="w-1/5 flex flex-col gap-2">
         <p className="font-bold">{t('footer.about')}</p>
@@ -48,4 +46,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default SpecialFooter;

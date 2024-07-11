@@ -3,165 +3,146 @@ import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SearchCard from "../components/SearchCard";
-const recipesData = [
-  {
-    title: "Chicken Shawarma",
-    description:
-      "The best homemade shawarma recipe using the most amazing (and easy!) spice mixture. Great for salads, wraps + bowls!",
-    stars: 5,
-    serving: "Serves 6 - Medium difficulty - 90 mins",
-    image:
-      "https://hips.hearstapps.com/hmg-prod/images/190130-chicken-shwarma-horizontal-1549421250.png?crop=1xw:0.843328335832084xh;center,top",
-    cuisine: "Middle Eastern",
-    servingSize: "6",
-    cookingTime: "90 mins",
-    difficulty: "Medium",
-  },
-  {
-    title: "Ground beef tacos",
-    description:
-      "Delicious ground beef tacos seasoned to perfection, served with fresh salsa and guacamole. Perfect for Taco Tuesdays!",
-    stars: 4,
-    serving: "Serves 4 - Easy difficulty - 45 mins",
-    image: "https://www.onceuponachef.com/images/2023/08/Beef-Tacos.jpg",
-    cuisine: "Mexican",
-    servingSize: "4",
-    cookingTime: "45 mins",
-    difficulty: "Easy",
-  },
-  {
-    title: "One-pan sausage pasta",
-    description:
-      "An easy one-pan sausage pasta dish with creamy sauce and lots of flavor. Ready in under 30 minutes!",
-    stars: 4,
-    serving: "Serves 3 - Medium difficulty - 25 mins",
-    image:
-      "https://www.mrsjoneskitchen.com/wp-content/uploads/2022/08/one-pot-creamy-sausage-pasta.jpg",
-    cuisine: "Italian",
-    servingSize: "3",
-    cookingTime: "25 mins",
-    difficulty: "Medium",
-  },
-  {
-    title: "Vegetarian Pad Thai",
-    description:
-      "A classic vegetarian pad thai made with rice noodles, tofu, peanuts, and a tangy tamarind sauce. Bursting with flavors!",
-    stars: 3,
-    serving: "Serves 4 - Medium difficulty - 40 mins",
-    image:
-      "https://img.taste.com.au/z9EIVHJg/taste/2021/02/10-minute-vegetarian-pad-thai-168946-2.jpg",
-    cuisine: "Thai",
-    servingSize: "4",
-    cookingTime: "40 mins",
-    difficulty: "Medium",
-  },
-  {
-    title: "Spinach and Feta Stuffed Chicken Breast",
-    description:
-      "Tender chicken breasts stuffed with spinach, feta cheese, and herbs, baked to perfection. Elegant and delicious!",
-    stars: 4,
-    serving: "Serves 2 - Medium difficulty - 35 mins",
-    image:
-      "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2023_48/2041166/chef-dan-churchill-chicken-mc-2x1-231128.jpg",
-    cuisine: "Middle Eastern",
-    servingSize: "2",
-    cookingTime: "35 mins",
-    difficulty: "Medium",
-  },
-  {
-    title: "Mushroom Risotto",
-    description:
-      "Creamy and comforting mushroom risotto made with Arborio rice, mushrooms, Parmesan cheese, and a touch of white wine.",
-    stars: 5,
-    serving: "Serves 4 - Hard difficulty - 45 mins",
-    image:
-      "https://www.allrecipes.com/thmb/Pow6PE9UyushNDB4wutXNnmriX8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/85389-gourmet-mushroom-risotto-86-7a2d218f53e94ccfaecc69b6fd93cab8.jpg",
-    cuisine: "Italian",
-    servingSize: "4",
-    cookingTime: "45 mins",
-    difficulty: "Hard",
-  },
-  {
-    title: "Grilled Salmon with Lemon Butter Sauce",
-    description:
-      "Juicy grilled salmon fillets topped with a tangy lemon butter sauce. Perfect for a healthy and flavorful dinner.",
-    stars: 2,
-    serving: "Serves 2 - Medium difficulty - 20 mins",
-    image:
-      "https://hips.hearstapps.com/hmg-prod/images/how-to-grill-salmon-recipe1-1655870645.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*",
-    cuisine: "Thai",
-    servingSize: "2",
-    cookingTime: "20 mins",
-    difficulty: "Medium",
-  },
-  {
-    title: "Caprese Salad",
-    description:
-      "Fresh and vibrant Caprese salad with ripe tomatoes, fresh mozzarella, basil leaves, and a drizzle of balsamic glaze.",
-    stars: 5,
-    serving: "Serves 2 - Easy difficulty - 10 mins",
-    image:
-      "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Caprese-Salad-main-1.jpg",
-    cuisine: "Italian",
-    servingSize: "2",
-    cookingTime: "10 mins",
-    difficulty: "Easy",
-  },
-  {
-    title: "Pesto Chicken Pasta",
-    description:
-      "Delicious pasta tossed in creamy pesto sauce with tender chicken breast and sun-dried tomatoes. A comforting and flavorful dish!",
-    stars: 4,
-    serving: "Serves 4 - Medium difficulty - 30 mins",
-    image:
-      "https://www.budgetbytes.com/wp-content/uploads/2019/10/Creamy-Pesto-Chicken-Pasta-close-plate.jpg",
-    cuisine: "Italian",
-    servingSize: "4",
-    cookingTime: "30 mins",
-    difficulty: "Medium",
-  },
-  {
-    title: "Spaghetti Carbonara",
-    description:
-      "Classic Italian spaghetti carbonara with crispy pancetta, creamy egg sauce, and Parmesan cheese. A comforting dish loved worldwide!",
-    stars: 4,
-    serving: "Serves 4 - Medium difficulty - 30 mins",
-    image:
-      "https://images.services.kitchenstories.io/6glN_4JhpVS9aUiBS7JnGsuDULA=/3840x0/filters:quality(80)/images.kitchenstories.io/wagtailOriginalImages/R2568-photo-final-_0.jpg",
-    cuisine: "Italian",
-    servingSize: "4",
-    cookingTime: "30 mins",
-    difficulty: "Medium",
-  },
-  {
-    title: "Tom Yum Soup",
-    description:
-      "Authentic Thai Tom Yum soup with shrimp, mushrooms, lemongrass, and chili. A spicy and sour soup that's refreshing and full of flavors!",
-    stars: 4,
-    serving: "Serves 4 - Medium difficulty - 25 mins",
-    image:
-      "https://www.thespruceeats.com/thmb/PrhhN3g0-fkHH3ULhqcOdo8X_Mk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegetarian-tom-yum-soup-3217762-hero-01-4872510cb5f24d9480e7a2f4b8f23c57.jpg",
-    cuisine: "Thai",
-    servingSize: "4",
-    cookingTime: "25 mins",
-    difficulty: "Medium",
-  },
-  {
-    title: "Tacos al Pastor",
-    description:
-      "Traditional Mexican tacos al pastor with marinated pork, pineapple, onions, and cilantro. Bursting with flavors and perfect for any fiesta!",
-    stars: 5,
-    serving: "Serves 6 - Medium difficulty - 60 mins",
-    image:
-      "https://www.seriouseats.com/thmb/4kbwN13BlZnZ3EywrtG2AzCKuYs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20210712-tacos-al-pastor-melissa-hom-seriouseats-37-f72cdd02c9574bceb1eef1c8a23b76ed.jpg",
-    cuisine: "Mexican",
-    servingSize: "6",
-    cookingTime: "60 mins",
-    difficulty: "Medium",
-  },
-];
+import { useTranslation } from "react-i18next";
+
+
 
 function Recipes() {
+  const { t } = useTranslation();
+  const recipesData = [
+    {
+      title: t("chickenShawarma.title"),
+      description: t("chickenShawarma.description"),
+      stars: 5,
+      serving: t("chickenShawarma.serving"),
+      image: "https://hips.hearstapps.com/hmg-prod/images/190130-chicken-shwarma-horizontal-1549421250.png?crop=1xw:0.843328335832084xh;center,top",
+      cuisine: t("chickenShawarma.cuisine"),
+      servingSize: "6",
+      cookingTime: t("chickenShawarma.cookingTime"),
+      difficulty: t("chickenShawarma.difficulty"),
+    },
+    {
+      title: t("Groundbeeftacos.title"),
+      description: t("Groundbeeftacos.description"),
+      stars: 4,
+      serving: t("Groundbeeftacos.serving"),
+      image: "https://www.onceuponachef.com/images/2023/08/Beef-Tacos.jpg",
+      cuisine: t("Groundbeeftacos.cuisine"),
+      servingSize: "4",
+      cookingTime: t("Groundbeeftacos.cookingTime"),
+      difficulty: t("Groundbeeftacos.difficulty"),
+    },
+    {
+      title: t("Onepansausagepasta.title"),
+      description: t("Onepansausagepasta.description"),
+      stars: 4,
+      serving: t("Onepansausagepasta.serving"),
+      image: "https://www.mrsjoneskitchen.com/wp-content/uploads/2022/08/one-pot-creamy-sausage-pasta.jpg",
+      cuisine: t("Onepansausagepasta.cuisine"),
+      servingSize: "3",
+      cookingTime: t("Onepansausagepasta.cookingTime"),
+      difficulty: t("Onepansausagepasta.difficulty"),
+    },
+    {
+      title: t("VegetarianPadThai.title"),
+      description: t("VegetarianPadThai.description"),
+      stars: 3,
+      serving: t("VegetarianPadThai.serving"),
+      image: "https://img.taste.com.au/z9EIVHJg/taste/2021/02/10-minute-vegetarian-pad-thai-168946-2.jpg",
+      cuisine: t("VegetarianPadThai.cuisine"),
+      servingSize: "4",
+      cookingTime: t("VegetarianPadThai.cookingTime"),
+      difficulty: t("VegetarianPadThai.difficulty"),
+    },
+    {
+      title: t("SpinachandFetaStuffedChickenBreast.title"),
+      description: t("SpinachandFetaStuffedChickenBreast.description"),
+      stars: 4,
+      serving: t("SpinachandFetaStuffedChickenBreast.serving"),
+      image: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2023_48/2041166/chef-dan-churchill-chicken-mc-2x1-231128.jpg",
+      cuisine: t("SpinachandFetaStuffedChickenBreast.cuisine"),
+      servingSize: "2",
+      cookingTime: t("SpinachandFetaStuffedChickenBreast.cookingTime"),
+      difficulty: t("SpinachandFetaStuffedChickenBreast.difficulty"),
+    },
+    {
+      title: t("MushroomRisotto.title"),
+      description: t("MushroomRisotto.description"),
+      stars: 5,
+      serving: t("MushroomRisotto.serving"),
+      image: "https://www.allrecipes.com/thmb/Pow6PE9UyushNDB4wutXNnmriX8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/85389-gourmet-mushroom-risotto-86-7a2d218f53e94ccfaecc69b6fd93cab8.jpg",
+      cuisine: t("MushroomRisotto.cuisine"),
+      servingSize: "4",
+      cookingTime: t("MushroomRisotto.cookingTime"),
+      difficulty: t("MushroomRisotto.difficulty"),
+    },
+    {
+      title: t("GrilledSalmonwithLemonButterSauce.title"),
+      description: t("GrilledSalmonwithLemonButterSauce.description"),
+      stars: 2,
+      serving: t("GrilledSalmonwithLemonButterSauce.serving"),
+      image: "https://hips.hearstapps.com/hmg-prod/images/how-to-grill-salmon-recipe1-1655870645.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*",
+      cuisine: t("GrilledSalmonwithLemonButterSauce.cuisine"),
+      servingSize: "2",
+      cookingTime: t("GrilledSalmonwithLemonButterSauce.cookingTime"),
+      difficulty: t("GrilledSalmonwithLemonButterSauce.difficulty"),
+    },
+    {
+      title: t("CapreseSalad.title"),
+      description: t("CapreseSalad.description"),
+      stars: 5,
+      serving: t("CapreseSalad.serving"),
+      image: "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Caprese-Salad-main-1.jpg",
+      cuisine: t("CapreseSalad.cuisine"),
+      servingSize: "2",
+      cookingTime: t("CapreseSalad.cookingTime"),
+      difficulty: t("CapreseSalad.difficulty"),
+    },
+    {
+      title: t("PestoChickenPasta.title"),
+      description: t("PestoChickenPasta.description"),
+      stars: 4,
+      serving: t("PestoChickenPasta.serving"),
+      image: "https://www.budgetbytes.com/wp-content/uploads/2019/10/Creamy-Pesto-Chicken-Pasta-close-plate.jpg",
+      cuisine: t("PestoChickenPasta.cuisine"),
+      servingSize: "4",
+      cookingTime: t("PestoChickenPasta.cookingTime"),
+      difficulty: t("PestoChickenPasta.difficulty"),
+    },
+    {
+      title: t("SpaghettiCarbonara.title"),
+      description: t("SpaghettiCarbonara.description"),
+      stars: 4,
+      serving: t("SpaghettiCarbonara.serving"),
+      image: "https://images.services.kitchenstories.io/6glN_4JhpVS9aUiBS7JnGsuDULA=/3840x0/filters:quality(80)/images.kitchenstories.io/wagtailOriginalImages/R2568-photo-final-_0.jpg",
+      cuisine: t("SpaghettiCarbonara.cuisine"),
+      servingSize: "4",
+      cookingTime: t("SpaghettiCarbonara.cookingTime"),
+      difficulty: t("SpaghettiCarbonara.difficulty"),
+    },
+    {
+      title: t("TomYumSoup.title"),
+      description: t("TomYumSoup.description"),
+      stars: 4,
+      serving: t("TomYumSoup.serving"),
+      image: "https://www.thespruceeats.com/thmb/PrhhN3g0-fkHH3ULhqcOdo8X_Mk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegetarian-tom-yum-soup-3217762-hero-01-4872510cb5f24d9480e7a2f4b8f23c57.jpg",
+      cuisine: t("TomYumSoup.cuisine"),
+      servingSize: "4",
+      cookingTime: t("TomYumSoup.cookingTime"),
+      difficulty: t("TomYumSoup.difficulty"),
+    },
+    {
+      title: t("TacosalPastor.title"),
+      description: t("TacosalPastor.description"),
+      stars: 5,
+      serving: t("TacosalPastor.serving"),
+      image: "https://www.seriouseats.com/thmb/4kbwN13BlZnZ3EywrtG2AzCKuYs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20210712-tacos-al-pastor-melissa-hom-seriouseats-37-f72cdd02c9574bceb1eef1c8a23b76ed.jpg",
+      cuisine: t("TacosalPastor.cuisine"),
+      servingSize: "6",
+      cookingTime: t("TacosalPastor.cookingTime"),
+      difficulty: t("TacosalPastor.difficulty"),
+    },
+  ];
   const scrollToRef = useRef(null);
   useEffect(() => {
     scrollToRef.current.scrollIntoView({ behavior: "smooth" });
@@ -266,7 +247,7 @@ function Recipes() {
       <Navbar />
       <div className="flex flex-col justify-center items-center pt-8 gap-4 pb-12">
         <h1 className="text-5xl font-extrabold uppercase text-heading-color w-2/3 text-center">
-          Search for your favorite recipes
+          {t("recipes.title")}
         </h1>
 
         <form class="w-1/3 mx-auto shadow-sm">
@@ -298,7 +279,7 @@ function Recipes() {
               type="search"
               id="default-search"
               class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Chicken Shawarma"
+              placeholder={t("recipes.placeholder")}
               value={searchQuery}
               onChange={handleSearchInputChange}
               required
@@ -308,22 +289,22 @@ function Recipes() {
         <div className="flex w-full px-12 justify-center gap-4 pt-12">
           <div className=" bg-white rounded-xl p-4 border-2 shadow-lg w-2/12 h-1/2">
             <h2 className="text-blue-600 uppercase text-2xl font-semibold mb-4">
-              Filter by
+              {t("filter")}
             </h2>
             <div>
-              <p className="font-semibold text-xl">Cuisine Types</p>
+              <p className="font-semibold text-xl">{t("recipes.cuisineTypes")}</p>
               <div class="flex items-center justify-between  text-lg">
                 <label
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  Italian
+                  {t("recipes.italian")}
                 </label>
                 <input
                   id="default-checkbox"
                   onChange={(e) => handleCuisineTypeChange(e)}
                   type="checkbox"
-                  value="Italian" // Set the value you want to print here
+                  value={t("recipes.italian")} 
                   className="w-4 h-4 text-black bg-black border-gray-300 rounded"
                 />
               </div>
@@ -332,13 +313,13 @@ function Recipes() {
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  Middle Eastern
+                  {t("recipes.middleEastern")}
                 </label>
                 <input
                   id="default-checkbox"
                   onChange={(e) => handleCuisineTypeChange(e)}
                   type="checkbox"
-                  value="Middle Eastern" // Set the value you want to print here
+                  value={t("recipes.middleEastern")} 
                   className="w-4 h-4 text-black bg-black border-gray-300 rounded"
                 />
               </div>
@@ -347,13 +328,13 @@ function Recipes() {
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  Mexican
+                  {t("recipes.mexican")}
                 </label>
                 <input
                   id="default-checkbox"
                   onChange={(e) => handleCuisineTypeChange(e)}
                   type="checkbox"
-                  value="Mexican" // Set the value you want to print here
+                  value={t("recipes.mexican")} 
                   className="w-4 h-4 text-black bg-black border-gray-300 rounded"
                 />
               </div>
@@ -362,32 +343,32 @@ function Recipes() {
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  Thai
+                  {t("recipes.thai")}
                 </label>
                 <input
                   id="default-checkbox"
                   onChange={(e) => handleCuisineTypeChange(e)}
                   type="checkbox"
-                  value="Thai" // Set the value you want to print here
+                  value={t("recipes.thai")}
                   className="w-4 h-4 text-black bg-black border-gray-300 rounded"
                 />
               </div>
             </div>
             <div className="bg-gray-200 w-full h-0.5 rounded-lg  my-2"></div>
             <div>
-              <p className="font-semibold text-xl">Difficulty</p>
+              <p className="font-semibold text-xl">{t("recipes.difficulty")}</p>
               <div class="flex items-center justify-between text-lg">
                 <label
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  Easy
+                  {t("recipes.easy")}
                 </label>
                 <input
                   id="default-checkbox"
                   onChange={(e) => handleDifficultyChange(e)}
                   type="checkbox"
-                  value="Easy" // Set the value you want to print here
+                  value={t("recipes.easy")} // Set the value you want to print here
                   className="w-4 h-4 text-black bg-black border-gray-300 rounded"
                 />
               </div>
@@ -396,13 +377,13 @@ function Recipes() {
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  Medium
+                  {t("recipes.medium")}
                 </label>
                 <input
                   id="default-checkbox"
                   onChange={(e) => handleDifficultyChange(e)}
                   type="checkbox"
-                  value="Medium" // Set the value you want to print here
+                  value={t("recipes.medium")} // Set the value you want to print here
                   className="w-4 h-4 text-black bg-black border-gray-300 rounded"
                 />
               </div>
@@ -411,26 +392,26 @@ function Recipes() {
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  Hard
+                  {t("recipes.hard")}
                 </label>
                 <input
                   id="default-checkbox"
                   onChange={(e) => handleDifficultyChange(e)}
                   type="checkbox"
-                  value="Hard" // Set the value you want to print here
+                  value={t("recipes.hard")} // Set the value you want to print here
                   className="w-4 h-4 text-black bg-black border-gray-300 rounded"
                 />
               </div>
             </div>
             <div className="bg-gray-200 w-full h-0.5 rounded-lg  my-2"></div>
             <div>
-              <p className="font-semibold text-xl">Rating</p>
+              <p className="font-semibold text-xl">{t("recipes.rating")}</p>
               <div class="flex items-center justify-between text-lg">
                 <label
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  One Star
+                  {t("recipes.onestar")}
                 </label>
                 <input
                   id="default-checkbox"
@@ -445,7 +426,7 @@ function Recipes() {
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  Two Star
+                  {t("recipes.twostar")}
                 </label>
                 <input
                   id="default-checkbox"
@@ -460,7 +441,7 @@ function Recipes() {
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  Three Star
+                  {t("recipes.threestar")}
                 </label>
                 <input
                   id="default-checkbox"
@@ -475,7 +456,7 @@ function Recipes() {
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  Four Star
+                  {t("recipes.fourstar")}
                 </label>
                 <input
                   id="default-checkbox"
@@ -490,7 +471,7 @@ function Recipes() {
                   for="default-checkbox"
                   class="ms-2 font-medium text-black"
                 >
-                  Five Star
+                  {t("recipes.fivestar")}
                 </label>
                 <input
                   id="default-checkbox"
@@ -505,7 +486,7 @@ function Recipes() {
                   onClick={() => clearFilters()}
                   className="bg-blue-500 p-2 rounded-xl text-white font-semibold mt-4 justify-center hover:bg-blue-700 shadow-lg"
                 >
-                  Clear Filters
+                  {t("recipes.clear")}
                 </button>
               </div>
             </div>

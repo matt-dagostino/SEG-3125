@@ -1,11 +1,15 @@
 import React from "react";
 import { ReactComponent as Icon } from "../img/logo.svg";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 function Navbar(props) {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
   return (
-    <div className="w-full flex justify-between p-12 pb-0 items-center">
-      <Icon className="hidden xl:block" />
-      <div className="flex gap-16">
+    <div className="w-full flex justify-between p-12 pb-0 items-center justify-center">
+      <Icon className="hidden 2xl:block cursor-pointer" onClick={() => navigate("/")}/>
+      <div className="flex gap-8">
         <a
           href="/"
           className={
@@ -14,7 +18,7 @@ function Navbar(props) {
               : "text-gray-500 hover:text-blue-900"
           }
         >
-          HOME
+          {t("navbar.home")}
         </a>
         <a
           href="/recipes"
@@ -24,7 +28,7 @@ function Navbar(props) {
               : "text-gray-500 hover:text-blue-900"
           }
         >
-          EXPLORE RECIPES
+          {t("navbar.explore")}
         </a>
         <a
           href="/assistant"
@@ -34,7 +38,7 @@ function Navbar(props) {
               : "text-gray-500 hover:text-blue-900"
           }
         >
-          COOKING HELP
+          {t("navbar.cooking")}
         </a>
         <a
           href="/list"
@@ -44,7 +48,7 @@ function Navbar(props) {
               : "text-gray-500 hover:text-blue-900"
           }
         >
-          MY LISTS
+          {t("navbar.list")}
         </a>
         <a
           href="/zoom"
@@ -54,14 +58,24 @@ function Navbar(props) {
               : "text-gray-500 hover:text-blue-900"
           }
         >
-          LIVE SESSIONS
+          {t("navbar.zoom")}
+        </a>
+        <a
+          href="/faq"
+          className={
+            props.location === "faq"
+              ? "font-bold text-black"
+              : "text-gray-500 hover:text-blue-900"
+          }
+        >
+          {t("navbar.faq")}
         </a>
       </div>
       <a
         href="/addrecipe"
         className="bg-heading-color text-white text-sm py-2 px-4 rounded-2xl hover:bg-blue-900"
       >
-        + ADD RECIPE
+        {t("navbar.recipe")}
       </a>
     </div>
   );

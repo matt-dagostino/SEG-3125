@@ -4,9 +4,11 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { ReactComponent as Upload } from "../img/upload.svg";
 import { ReactComponent as RemoveButton } from "../img/removebutton.svg";
+import { useTranslation } from "react-i18next";
 
 function AddRecipe() {
   const router = useNavigate();
+  const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(false);
   const inputFile = useRef(null);
   const onButtonClick = () => {
@@ -58,11 +60,10 @@ function AddRecipe() {
         <div className="flex flex-col justify-center h-screen items-center pt-8 gap-4 pb-12">
           <div className="text-center flex flex-col gap-4 p-12 bg-white rounded-xl">
             <h1 className="text-5xl font-extrabold uppercase">
-              Recipe submitted
+              {t("addRecipe.submit")}
             </h1>
             <p className="text-xl">
-              Your recipe has been submitted successfully. Thank you for sharing
-              your recipe with the community!
+              {t("addRecipe.description")}
             </p>
           </div>
         </div>
@@ -75,7 +76,7 @@ function AddRecipe() {
     <div>
       <Navbar />
       <div className="flex flex-col justify-center items-center pt-8 gap-4 pb-12">
-        <h1 className="text-5xl font-extrabold uppercase">Add a recipe</h1>
+        <h1 className="text-5xl font-extrabold uppercase">{t('addRecipe.title')}</h1>
         <div className="pt-8">
           <input
             type="file"
@@ -104,13 +105,13 @@ function AddRecipe() {
                 htmlFor="recipe-title"
                 className="block mb-2 text-lg font-medium text-gray-900"
               >
-                Recipe Title <span className="font-bold text-red-600">*</span>
+                {t('addRecipe.name')} <span className="font-bold text-red-600">*</span>
               </label>
               <input
                 id="recipe-title"
                 type="text"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Enter your recipe title"
+                placeholder={t('addRecipe.nameDescription')}
                 required
               />
             </div>
@@ -119,14 +120,14 @@ function AddRecipe() {
                 htmlFor="short-description"
                 className="block mb-2 text-lg font-medium text-gray-900"
               >
-                Short Description{" "}
+                {t('addRecipe.shortDescription')}{" "}
                 <span className="font-bold text-red-600">*</span>
               </label>
               <input
                 id="short-description"
                 type="text"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Describe your recipe in a way that makes mouths water."
+                placeholder={t('addRecipe.shortDescriptionDescription')}
                 required
               />
             </div>
@@ -138,13 +139,13 @@ function AddRecipe() {
                   htmlFor="servings"
                   className="block mb-2 text-lg font-medium text-gray-900"
                 >
-                  Servings <span className="font-bold text-red-600">*</span>
+                  {t("addRecipe.servings")} <span className="font-bold text-red-600">*</span>
                 </label>
                 <input
                   id="servings"
                   type="text"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 h-12 w-1/2"
-                  placeholder="e.g., 4"
+                  placeholder={t("addRecipe.example")}
                   required
                 />
               </div>
@@ -153,13 +154,13 @@ function AddRecipe() {
                   htmlFor="prep-time"
                   className="block mb-2 text-lg font-medium text-gray-900"
                 >
-                  Prep Time <span className="font-bold text-red-600">*</span>
+                  {t("addRecipe.prep")} <span className="font-bold text-red-600">*</span>
                 </label>
                 <input
                   id="prep-time"
                   type="text"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 h-12 w-1/2"
-                  placeholder="mins"
+                  placeholder={t("addRecipe.mins")}
                   required
                 />
               </div>
@@ -168,13 +169,13 @@ function AddRecipe() {
                   htmlFor="cook-time"
                   className="block mb-2 text-lg font-medium text-gray-900"
                 >
-                  Cook Time <span className="font-bold text-red-600">*</span>
+                  {t("addRecipe.cook")} <span className="font-bold text-red-600">*</span>
                 </label>
                 <input
                   id="cook-time"
                   type="text"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 h-12 w-1/2"
-                  placeholder="mins"
+                  placeholder={t("addRecipe.mins")}
                   required
                 />
               </div>
@@ -184,7 +185,7 @@ function AddRecipe() {
                 htmlFor="ingredients"
                 className="block mb-2 text-lg font-medium text-gray-900"
               >
-                Ingredients <span className="font-bold text-red-600">*</span>
+                {t("addRecipe.ingredients")} <span className="font-bold text-red-600">*</span>
               </label>
               {ingredients.map((ingredient, index) => (
                 <div key={index} className="flex items-center mb-2">
@@ -192,7 +193,7 @@ function AddRecipe() {
                     id={`ingredient-${index}`}
                     type="text"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                    placeholder="Item"
+                    placeholder={t("addRecipe.item")}
                     value={ingredient}
                     onChange={(e) => handleInputChange(index, e.target.value)}
                     required
@@ -214,7 +215,7 @@ function AddRecipe() {
                 className="text-black font-bold rounded-lg px-4 py-2 mt-2"
                 aria-label="Add ingredient"
               >
-                + Add Ingredient
+                {t("addRecipe.addIngredient")}
               </button>
             </div>
           </div>
@@ -224,21 +225,21 @@ function AddRecipe() {
               htmlFor="instructions"
               className="block mb-2 text-lg font-medium text-gray-900"
             >
-              Instructions <span className="font-bold text-red-600">*</span>
+              {t("addRecipe.instructions")} <span className="font-bold text-red-600">*</span>
             </label>
             <p className="mb-8">
-              Break down your recipe into clear, step-by-step instructions.
+              {t("addRecipe.instructionsDescription")}
             </p>
             {steps.map((step, index) => (
               <div key={index} className="flex flex-col items-start mb-2">
                 <p className="mb-2" id={`step-label-${index}`}>
-                  Step {index + 1}
+                {t("addRecipe.step")} {index + 1}
                 </p>
                 <div className="flex w-full mb-4">
                   <textarea
                     id={`step-${index}`}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 h-24"
-                    placeholder="Item"
+                    placeholder={t("addRecipe.item")}
                     value={step}
                     onChange={(e) => handleInputChange2(index, e.target.value)}
                     required
@@ -261,7 +262,7 @@ function AddRecipe() {
               className="text-black font-bold rounded-lg px-4 py-2 mt-2"
               aria-label="Add step"
             >
-              + Add Step
+              {t("addRecipe.addStep")}
             </button>
           </div>
           <div className="flex justify-end gap-4 mt-8">
@@ -271,14 +272,14 @@ function AddRecipe() {
               className="font-semibold border-2 border-blue-600 text-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-md w-full sm:w-auto px-5 py-2.5 text-center"
               aria-label="Cancel and return to homepage"
             >
-              Cancel
+              {t("addRecipe.cancel")}
             </button>
             <button
               type="submit"
               className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-md w-full sm:w-auto px-5 py-2.5 text-center"
               aria-label="Submit recipe"
             >
-              Submit Recipe
+              {t("addRecipe.submitButton")}
             </button>
           </div>
         </form>

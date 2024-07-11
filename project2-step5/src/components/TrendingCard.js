@@ -5,6 +5,7 @@ import { ReactComponent as Threestar } from "../img/3star.svg";
 import { ReactComponent as Fourstar } from "../img/4star.svg";
 import { ReactComponent as Fivestar } from "../img/5star.svg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function TrendingCard(props) {
   const images = {
@@ -14,6 +15,7 @@ export default function TrendingCard(props) {
     pasta:
       "https://www.mrsjoneskitchen.com/wp-content/uploads/2022/08/one-pot-creamy-sausage-pasta.jpg",
   };
+  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col max-w-lg text-heading-color shadow-md">
@@ -38,9 +40,9 @@ export default function TrendingCard(props) {
               pathname: `/recipe/${props.title}`, // Example URL structure
               state: { recipe: props },
             }}
-            className="border uppercase font-semibold border-heading-color rounded-2xl py-1 px-3"
+            className="border uppercase font-semibold border-heading-color rounded-2xl py-1 px-3 text-sm 2xl:text-base"
           >
-            View Recipe
+            {t("lists.viewRecipe")}
           </Link>
         </div>
       </div>

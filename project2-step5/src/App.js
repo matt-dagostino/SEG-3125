@@ -6,6 +6,7 @@ import Recipe from './Pages/Recipe';
 import Recipes from './Pages/Recipes';
 import Zoom from './Pages/Zoom';
 import List from './Pages/List';
+import Faq from './Pages/Faq';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/zoom" element={<Zoom />} />
           <Route path="/list" element={<List />} />
+          <Route path="/faq" element={<Faq />} />
         </Routes>
       </div>
     </Router>
