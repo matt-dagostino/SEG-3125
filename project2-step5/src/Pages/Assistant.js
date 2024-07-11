@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -47,7 +46,7 @@ function Assistant() {
       message;
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    const text = response.text();
+    const text = await response.text();
 
     const responseMessage = {
       message: text,
@@ -77,32 +76,37 @@ function Assistant() {
                 <Avatar
                   name="Dish Discovery Assistant"
                   src="https://static.vecteezy.com/system/resources/previews/021/059/827/non_2x/chatgpt-logo-chat-gpt-icon-on-white-background-free-vector.jpg"
-                  art="Dish Discovery Assistant Icon"
+                  alt="Dish Discovery Assistant Icon"
+                  aria-label="Dish Discovery Assistant Icon"
                 />
                 <ConversationHeader.Content
                   info="Active now"
                   userName="Dish Discovery Assistant"
+                  aria-label="Dish Discovery Assistant is active now"
                 />
                 <ConversationHeader.Actions>
-                  <InfoButton />
+                  <InfoButton aria-label="Information about Dish Discovery Assistant" />
                 </ConversationHeader.Actions>
               </ConversationHeader>
               <MessageList
                 style={{ height: "500px" }}
                 typingIndicator={
                   typing ? (
-                    <TypingIndicator content="Dish Discovery Assistant is typing..." />
+                    <TypingIndicator content="Dish Discovery Assistant is typing..." aria-live="polite" />
                   ) : null
                 }
               >
                 {messages.map((message, index) => {
-                  return <Message key={index} model={message} />;
+                  return (
+                    <Message key={index} model={message} aria-live="polite" />
+                  );
                 })}
               </MessageList>
               <MessageInput
                 placeholder="Type a message..."
                 onSend={sendMessage}
                 attachButton={false}
+                aria-label="Type a message and press enter to send"
               />
             </ChatContainer>
           </MainContainer>
